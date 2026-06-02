@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>강의 전 준비 · AI 도구 가입 안내 | 생성형 AI 기반 업무자동화</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet" type="text/css" />
+<style>
+  :root{
+    --navy:#004890;
+    --navy-deep:#002a52;
+    --green:#68A840;
+    --ink:#16202e;
+    --muted:#5b6b7e;
+    --line:#e6ebf1;
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --amber:#e8820c;
+    --radius:20px;
+    --shadow:0 10px 30px -12px rgba(0,40,90,.18);
+    --shadow-lg:0 22px 50px -20px rgba(0,40,90,.32);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-0.01em;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(104,168,64,.30), transparent 60%),
+      radial-gradient(800px 600px at 0% 0%, rgba(60,130,220,.35), transparent 55%),
+      linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:#fff;
+    overflow:hidden;
+    padding:64px 0 120px;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px);
+    background-size:22px 22px;
+    -webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);
+    mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);
+    opacity:.55;
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .brandrow{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;letter-spacing:.02em;opacity:.92;}
+  .brandrow .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(104,168,64,.25);}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:30px;padding:7px 15px;border-radius:999px;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+    font-size:13.5px;font-weight:600;backdrop-filter:blur(6px);
+  }
+  h1{
+    margin-top:20px;font-size:clamp(30px,5.4vw,50px);font-weight:800;
+    line-height:1.18;letter-spacing:-0.03em;
+  }
+  h1 .hl{color:#bfe39a;}
+  .lead{margin-top:18px;font-size:clamp(16px,2.4vw,19px);max-width:640px;color:rgba(255,255,255,.9);font-weight:450;}
+  .metarow{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .chip{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:9px 14px;border-radius:12px;font-size:13.5px;font-weight:600;
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+  }
+  .chip svg{width:15px;height:15px;opacity:.85;}
+
+  /* ===== FLOATING CARD ===== */
+  .float{
+    margin-top:-78px;position:relative;z-index:5;
+  }
+  .keycard{
+    background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-lg);
+    border:1px solid var(--line);padding:30px 28px;
+    display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;
+  }
+  .keyicon{
+    width:64px;height:64px;border-radius:18px;flex-shrink:0;
+    background:linear-gradient(145deg,#4285f4,#1a73e8);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px -6px rgba(26,115,244,.5);
+  }
+  .keyicon svg{width:34px;height:34px;}
+  .keycard h2{font-size:20px;font-weight:800;letter-spacing:-0.02em;}
+  .keycard p{margin-top:6px;color:var(--muted);font-size:15px;}
+  .keycard .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;}
+  .tags span{font-size:12.5px;font-weight:600;color:var(--navy);background:#eaf2fb;border:1px solid #d4e6fb;padding:5px 11px;border-radius:8px;}
+  .keycard .gbtn{margin-top:16px;}
+
+  /* ===== SECTION ===== */
+  section.body{padding:54px 0 30px;}
+  .sechead{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:6px;}
+  .sectitle{font-size:24px;font-weight:800;letter-spacing:-0.025em;display:flex;align-items:center;gap:11px;}
+  .sectitle .bar{width:5px;height:24px;border-radius:4px;background:var(--green);}
+  .secsub{color:var(--muted);font-size:15px;margin:8px 0 26px;}
+
+  /* ===== TOOL GRID ===== */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .tool{
+    position:relative;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:24px 24px 22px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .tool:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:#cfe0f2;}
+  .tool .top{display:flex;align-items:center;gap:14px;}
+  .logo{
+    width:52px;height:52px;border-radius:14px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:20px;
+  }
+  .tname{font-size:18.5px;font-weight:800;letter-spacing:-0.02em;}
+  .tuse{font-size:13.5px;color:var(--muted);margin-top:2px;}
+  .badge{
+    position:absolute;top:18px;right:18px;font-size:11.5px;font-weight:700;
+    padding:5px 11px;border-radius:999px;letter-spacing:.01em;
+  }
+  .b-must{background:#fdeede;color:var(--amber);border:1px solid #f7d4a6;}
+  .b-reco{background:#eef6e6;color:#4e7d24;border:1px solid #d3e8bd;}
+  .b-none{background:#eef1f5;color:#67768a;border:1px solid #dde3ea;}
+
+  .how{margin-top:18px;border-top:1px dashed var(--line);padding-top:16px;flex-grow:1;}
+  .how .label{font-size:11.5px;font-weight:700;color:#9aa7b6;letter-spacing:.05em;text-transform:uppercase;margin-bottom:9px;}
+  .how ol{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:8px;}
+  .how li{counter-increment:s;position:relative;padding-left:30px;font-size:14px;color:#33414f;}
+  .how li::before{
+    content:counter(s);position:absolute;left:0;top:1px;
+    width:20px;height:20px;border-radius:50%;background:var(--navy);color:#fff;
+    font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .how li b{color:var(--ink);font-weight:700;}
+  .note{margin-top:13px;font-size:12.5px;color:#7a8696;background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:9px 12px;display:flex;gap:7px;align-items:flex-start;}
+  .note svg{width:14px;height:14px;flex-shrink:0;margin-top:3px;color:var(--green);}
+
+  /* ===== BUTTON ===== */
+  .gbtn{
+    margin-top:18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:14px 18px;border-radius:13px;border:none;cursor:pointer;
+    background:var(--navy);color:#fff;font-family:inherit;font-size:15px;font-weight:700;
+    text-decoration:none;letter-spacing:-0.01em;
+    transition:background .2s ease, transform .15s ease, box-shadow .2s ease;
+    box-shadow:0 8px 18px -8px rgba(0,72,144,.6);
+  }
+  .gbtn:hover{background:#0058ad;transform:translateY(-2px);box-shadow:0 12px 22px -8px rgba(0,72,144,.7);}
+  .gbtn:active{transform:translateY(0);}
+  .gbtn svg{width:17px;height:17px;transition:transform .2s ease;}
+  .gbtn:hover svg{transform:translateX(3px);}
+  .gbtn.ghost{background:#fff;color:var(--navy);border:1.5px solid #cfe0f2;box-shadow:none;}
+  .gbtn.ghost:hover{background:#f3f8ff;}
+  .gbtn.keybtn{width:auto;padding:13px 26px;}
+
+  /* ===== CHECKLIST ===== */
+  .checkwrap{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 26px;}
+  .progbar{height:10px;border-radius:99px;background:#e9eef4;overflow:hidden;margin:4px 0 22px;}
+  .progfill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--navy),var(--green));transition:width .4s ease;}
+  .progtxt{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .check{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);
+    border-radius:13px;margin-bottom:10px;cursor:pointer;user-select:none;
+    transition:background .2s ease,border-color .2s ease;
+  }
+  .check:hover{background:#f7faff;border-color:#cfe0f2;}
+  .check.done{background:#f1f8ec;border-color:#cfe6b8;}
+  .box{
+    width:24px;height:24px;border-radius:7px;border:2px solid #c4d0dd;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;transition:all .2s ease;
+  }
+  .check.done .box{background:var(--green);border-color:var(--green);}
+  .box svg{width:14px;height:14px;color:#fff;opacity:0;transition:opacity .2s ease;}
+  .check.done .box svg{opacity:1;}
+  .check .ctext{font-size:15px;font-weight:600;}
+  .check.done .ctext{color:#5a7a3f;text-decoration:line-through;text-decoration-color:rgba(104,168,64,.5);}
+  .check .ctag{margin-left:auto;font-size:12px;font-weight:700;color:#9aa7b6;}
+
+  /* ===== FOOTER ===== */
+  footer{margin-top:48px;background:var(--navy-deep);color:rgba(255,255,255,.88);padding:40px 0 46px;}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;}
+  .fquote{font-size:18px;font-weight:800;line-height:1.5;letter-spacing:-0.02em;}
+  .fquote span{color:#bfe39a;}
+  .finfo{text-align:right;}
+  .finfo .nm{font-size:16px;font-weight:800;}
+  .finfo .sub{font-size:13px;color:rgba(255,255,255,.6);margin-top:4px;}
+  .fbar{border-top:1px solid rgba(255,255,255,.12);margin-top:26px;padding-top:18px;font-size:12.5px;color:rgba(255,255,255,.5);text-align:center;}
+
+  @media (max-width:720px){
+    .grid{grid-template-columns:1fr;}
+    .keycard{grid-template-columns:1fr;text-align:center;}
+    .keyicon{margin:0 auto;}
+    .keycard .tags{justify-content:center;}
+    footer .wrap{flex-direction:column;text-align:center;}
+    .finfo{text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brandrow"><span class="dot"></span> All바른교육 강사 김상영</div>
+    <div class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15"><path d="M9 18l6-6-6-6"/></svg>
+      강의 전 준비 안내
+    </div>
+    <h1>강의에서 함께 쓸<br><span class="hl">AI 도구 가입</span> 사전 안내</h1>
+    <p class="lead">원활한 실습을 위해 아래 사이트에 대한 가입을 부탁드립니다. 카드의 버튼을 누르면 각 사이트로 이동합니다. (소요시간 5~10분)</p>
+    <div class="metarow">
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>강의명 : 생성형 AI 기반 업무자동화</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>강의일 : 6월 5일</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>제조기업 재직자 과정</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>강의장 : 한국기술교육대학교 <b style="color:#bfe39a;font-weight:800;margin:0 3px;">2캠퍼스</b> 901호 (충청남도 천안시 서북구 과수원길 18, 부대동)</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== KEY: GOOGLE ACCOUNT ===== -->
+<div class="wrap float">
+  <div class="keycard">
+    <div class="keyicon">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M21.35 11.1H12v3.2h5.35c-.25 1.4-1.6 4.1-5.35 4.1-3.2 0-5.8-2.65-5.8-5.9s2.6-5.9 5.8-5.9c1.8 0 3.05.77 3.75 1.43l2.55-2.46C16.9 3.6 14.7 2.7 12 2.7 6.85 2.7 2.7 6.85 2.7 12s4.15 9.3 9.3 9.3c5.35 0 8.9-3.75 8.9-9.05 0-.6-.07-1.07-.15-1.15z"/></svg>
+    </div>
+    <div>
+      <h2>먼저, 구글(Google) 계정 1개를 준비 부탁드립니다.</h2>
+      <p>아래 도구 중 절반 이상이 구글 계정으로 바로 시작가능합니다. 이미 Gmail을 쓰고 계시다면 그대로 사용하시면 됩니다.</p>
+      <div class="tags">
+        <span>Gemini</span><span>NotebookLM</span><span>Gemini Gems</span><span>Gamma</span><span>Genspark</span>
+      </div>
+      <a class="gbtn keybtn" href="https://accounts.google.com/signup" target="_blank" rel="noopener">
+        구글 계정 새로 만들기
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOOL CARDS ===== -->
+<section class="body">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="sectitle"><span class="bar"></span>도구별 가입 안내</div>
+    </div>
+    <p class="secsub">각 카드의 버튼을 누르면 가입·로그인 페이지가 새 창으로 열립니다. <b>필수</b> 표시 도구는 강의 전 반드시 가입을 완료해 주세요.</p>
+
+    <div class="grid">
+
+      <!-- ChatGPT -->
+      <div class="tool">
+        <span class="badge b-must">필수</span>
+        <div class="top">
+          <div class="logo" style="background:linear-gradient(145deg,#10a37f,#0d8a6c);">G</div>
+          <div>
+            <div class="tname">ChatGPT</div>
+            <div class="tuse">메인 생성형 AI · 문서/메일/데이터</div>
+          </div>
+        </div>
+        <div class="how">
+          <div class="label">가입 방법</div>
+          <ol>
+            <li><b>회원가입</b> 버튼 클릭</li>
+            <li>구글·이메일 중 택1로 가입</li>
+            <li>이메일/휴대폰 인증 후 완료</li>
+          </ol>
+          <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>구글 계정으로 가입하면 가장 빠릅니다.</div>
+        </div>
+        <a class="gbtn" href="https://chatgpt.com" target="_blank" rel="noopener">
+          ChatGPT 가입하러 가기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Gemini -->
+      <div class="tool">
+        <span class="badge b-must">필수</span>
+        <div class="top">
+          <div class="logo" style="background:linear-gradient(145deg,#4285f4,#9333ea);">✦</div>
+          <div>
+            <div class="tname">Gemini</div>
+            <div class="tuse">구글 생성형 AI · Gems 봇 제작 포함</div>
+          </div>
+        </div>
+        <div class="how">
+          <div class="label">접속 방법</div>
+          <ol>
+            <li>버튼 클릭해 사이트 접속</li>
+            <li><b>구글 계정으로 로그인</b></li>
+            <li>바로 사용 가능 (별도 가입 X)</li>
+          </ol>
+          <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>7교시 ‘Gemini Gems(나만의 봇)’도 여기서 함께 사용합니다.</div>
+        </div>
+        <a class="gbtn" href="https://gemini.google.com" target="_blank" rel="noopener">
+          Gemini 접속하기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Gamma -->
+      <div class="tool">
+        <span class="badge b-reco">권장</span>
+        <div class="top">
+          <div class="logo" style="background:linear-gradient(145deg,#7c5cff,#5b3df0);">◆</div>
+          <div>
+            <div class="tname">Gamma</div>
+            <div class="tuse">발표자료·기획안 자동 생성</div>
+          </div>
+        </div>
+        <div class="how">
+          <div class="label">가입 방법</div>
+          <ol>
+            <li>아래 버튼으로 가입 페이지 이동</li>
+            <li><b>구글 계정</b>으로 가입</li>
+            <li>워크스페이스 이름 입력 후 시작</li>
+          </ol>
+          <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1L12 16.5 5.7 21l2.3-7.1-6-4.5h7.6z"/></svg>아래 링크로 가입하면 무료 보너스 크레딧이 지급됩니다.</div>
+        </div>
+        <a class="gbtn" href="https://gamma.app/signup?r=6mgs7iz682i8j48" target="_blank" rel="noopener">
+          Gamma 가입하러 가기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Genspark -->
+      <div class="tool">
+        <span class="badge b-reco">권장</span>
+        <div class="top">
+          <div class="logo" style="background:linear-gradient(145deg,#5b6bf0,#3b3fce);">G</div>
+          <div>
+            <div class="tname">Genspark</div>
+            <div class="tuse">AI 에이전트 · 자료조사/슬라이드</div>
+          </div>
+        </div>
+        <div class="how">
+          <div class="label">가입 방법</div>
+          <ol>
+            <li>버튼 클릭해 사이트 접속</li>
+            <li><b>구글 계정으로 간편 가입</b></li>
+            <li>가입 즉시 무료 크레딧 지급</li>
+          </ol>
+          <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>신용카드 없이 가입되며 매일 무료 크레딧이 충전됩니다.</div>
+        </div>
+        <a class="gbtn" href="https://www.genspark.ai" target="_blank" rel="noopener">
+          Genspark 가입하러 가기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- NotebookLM -->
+      <div class="tool">
+        <span class="badge b-none">가입 불필요</span>
+        <div class="top">
+          <div class="logo" style="background:linear-gradient(145deg,#1a73e8,#0b57d0);">N</div>
+          <div>
+            <div class="tname">NotebookLM</div>
+            <div class="tuse">사내자료 분석·맞춤형 Q&amp;A</div>
+          </div>
+        </div>
+        <div class="how">
+          <div class="label">접속 방법</div>
+          <ol>
+            <li>버튼 클릭해 사이트 접속</li>
+            <li><b>구글 계정으로 로그인</b></li>
+            <li>회원가입 절차 없이 바로 이용</li>
+          </ol>
+          <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>구글 계정만 있으면 됩니다. 미리 한 번 접속만 해보세요.</div>
+        </div>
+        <a class="gbtn ghost" href="https://notebooklm.google.com" target="_blank" rel="noopener">
+          NotebookLM 접속해보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Claude Code (강사 시연) -->
+      <div class="tool">
+        <span class="badge b-none">준비 불필요</span>
+        <div class="top">
+          <div class="logo" style="background:linear-gradient(145deg,#d97757,#c2410c);">C</div>
+          <div>
+            <div class="tname">Claude Code</div>
+            <div class="tuse">8교시 자동화 라이브 시연</div>
+          </div>
+        </div>
+        <div class="how">
+          <div class="label">안내</div>
+          <ol>
+            <li><b>강사가 직접 시연</b>하는 도구입니다</li>
+            <li>수강생은 별도 가입이 필요 없습니다</li>
+            <li>편하게 화면으로 보시면 됩니다</li>
+          </ol>
+          <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>가입·설치 없이 시연만 보시면 되는 항목입니다.</div>
+        </div>
+        <span class="gbtn ghost" style="cursor:default;opacity:.7;">
+          가입 없이 시연으로 진행
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHECKLIST ===== -->
+<section class="body" style="padding-top:14px;">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="sectitle"><span class="bar"></span>강의 전 준비 체크리스트</div>
+    </div>
+    <p class="secsub">완료한 항목을 눌러 체크해 보세요. 모두 체크되면 준비 완료입니다!</p>
+
+    <div class="checkwrap">
+      <div class="progtxt"><span id="pcount">0</span> / 5 항목 완료</div>
+      <div class="progbar"><div class="progfill" id="pfill"></div></div>
+
+      <label class="check" data-k="google">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+        <span class="ctext">구글(Google) 계정 준비</span>
+        <span class="ctag">기반</span>
+      </label>
+      <label class="check" data-k="chatgpt">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+        <span class="ctext">ChatGPT 가입 완료</span>
+        <span class="ctag">필수</span>
+      </label>
+      <label class="check" data-k="gemini">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+        <span class="ctext">Gemini 로그인 확인</span>
+        <span class="ctag">필수</span>
+      </label>
+      <label class="check" data-k="gamma">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+        <span class="ctext">Gamma 가입 완료</span>
+        <span class="ctag">권장</span>
+      </label>
+      <label class="check" data-k="genspark">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+        <span class="ctext">Genspark 가입 완료</span>
+        <span class="ctag">권장</span>
+      </label>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fquote">“도구 준비를 마치면,<br><span>실습이 두 배로 즐거워집니다, 곧 뵙겠습니다 :)”</span></div>
+    <div class="finfo">
+      <div class="nm">all바른교육 이사 김상영</div>
+      <div class="sub">생성형 AI 활용 교육 · 업무 자동화 컨설팅</div>
+    </div>
+  </div>
+  <div class="fbar">가입 중 어려움이 있으면 강의 당일 시작 전에 도와드립니다. 편하게 오세요.</div>
+</footer>
+
+<script>
+  // ---- 체크리스트 (localStorage 저장, 실패 시에도 동작) ----
+  var KEY='ai_signup_checks_v1';
+  var saved={};
+  try{ saved=JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ saved={}; }
+
+  var checks=document.querySelectorAll('.check');
+  var total=checks.length;
+  var fill=document.getElementById('pfill');
+  var count=document.getElementById('pcount');
+
+  function render(){
+    var done=0;
+    checks.forEach(function(c){
+      var k=c.getAttribute('data-k');
+      if(saved[k]){ c.classList.add('done'); done++; }
+      else{ c.classList.remove('done'); }
+    });
+    count.textContent=done;
+    fill.style.width=(done/total*100)+'%';
+  }
+
+  checks.forEach(function(c){
+    c.addEventListener('click',function(){
+      var k=c.getAttribute('data-k');
+      saved[k]=!saved[k];
+      try{ localStorage.setItem(KEY,JSON.stringify(saved)); }catch(e){}
+      render();
+    });
+  });
+
+  render();
+</script>
+</body>
+</html>
